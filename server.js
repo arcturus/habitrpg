@@ -10,10 +10,13 @@ conf.argv().env().file({ file: __dirname + "/config.json" }).defaults({
 // Override normal ENV values with nconf ENV values (ENV values are used the same way without nconf)
 process.env.IP = conf.get("IP");
 process.env.PORT = conf.get("PORT");
+/*
 process.env.BASE_URL = conf.get("BASE_URL");
 process.env.FACEBOOK_KEY = conf.get("FACEBOOK_KEY");
 process.env.FACEBOOK_SECRET = conf.get("FACEBOOK_SECRET");
 process.env.NODE_DB_URI = conf.get("NODE_DB_URI");
+*/
+process.env.NODE_DB_URI = JSON.parse(process.env.VCAP_SERVICES).hostname;
 process.env.NODE_ENV = conf.get("NODE_ENV");
 process.env.SESSION_SECRET = conf.get("SESSION_SECRET");
 process.env.SMTP_USER = conf.get("SMTP_USER");
